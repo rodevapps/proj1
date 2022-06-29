@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+ <head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+  <title>Hello World</title> 
+
+  <script type="module" crossorigin src="/springapp/dist/index.js"></script>
+ </head>
+ <body>
+  <div>
+   <p>Normal query</p>
+
+   <form action="/" method="post">
+    <label for="column">Choose a column:</label>
+    <select name="column">
+     <option value="kolumna1">Column 1</option>
+     <option value="kolumna2">Column 2</option>
+     <option value="kolumna3">Column 3</option>
+     <option value="kolumna4">Column 4</option>
+    </select>
+
+    <label for="type">Choose a type: </label>
+    <select name="type">
+     <option value="recurrent">Recurrent</option>
+     <option value="unique">Unique</option>
+    </select>
+
+    <input type="submit" value="Send">
+   </form>
+
+   <table>
+    <tbody>
+     <tr th:each="row: ${rows}">
+      <td th:text="${row.id}" />
+      <td th:text="${row.kolumna1}" />
+      <td th:text="${row.kolumna2}" />
+      <td th:text="${row.kolumna3}" />
+      <td th:text="${row.kolumna4}" />
+     </tr>
+    </tbody>
+   </table>
+  </div>
+
+  <p>Ajax query</p>
+
+  <div id="app"></div>
+ </body>
+</html>
